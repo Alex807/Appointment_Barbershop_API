@@ -53,11 +53,25 @@
 			<version>1.5.13</version> <!-- Secure version -->
 		</dependency>
 
+		<!-- Added this dependency to match 'logback-core' one, because Spring Boot default version is older -->
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.5.13</version>
+		</dependency>
+
 		<!-- Springdoc OpenAPI dependency for Swagger UI -->
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
 			<version>2.2.0</version> <!-- Latest version -->
+		</dependency>
+
+		 <!-- To can connect to the MongoDB server -->
+		<dependency>
+			<groupId>org.mongodb</groupId>
+			<artifactId>mongodb-driver-sync</artifactId>
+			<version>5.3.0</version>
 		</dependency>
 
 	</dependencies>
