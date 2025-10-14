@@ -4,18 +4,19 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Component;
 
 @Entity
+@Component
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class BarbershopDTO {
+@Table(name = "user")
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    private String city;
-    private String street;
+    private String email;
     private String phone;
-    private byte[] logo;
 }
