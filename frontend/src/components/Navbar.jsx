@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Navbar.css";
+import logo from "../assets/trimtime-logo.png";
 import Home from "./Home";
 import axios from "axios";
 
@@ -28,8 +29,8 @@ const Navbar = ({ onSelectCategory, onSearch }) => {
           <div className="container-fluid">
             <a className="navbar-brand" href="https://www.linkedin.com/in/andrei-alexandru-burada/">
             <img 
-                src="/logo.png" 
-                alt="TrimTime Logo" 
+                src={logo} 
+                alt="TrimTime" 
                 height="40"
                 className="navbar-logo"
               />
