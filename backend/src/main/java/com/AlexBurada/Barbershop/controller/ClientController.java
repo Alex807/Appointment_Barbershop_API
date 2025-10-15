@@ -25,5 +25,4 @@ public class ClientController {
         return service.getClientById(clientId);
     }
 
-
 }

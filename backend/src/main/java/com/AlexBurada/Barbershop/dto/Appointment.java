@@ -21,5 +21,17 @@ public class Appointment {
     private int id;
     private String provided_service;
     private Date scheduled_date;
-    private int estimated_time;
+    private double price;
+
+    @ManyToOne
+    @JoinColumn(name = "client_id", nullable = false)
+    private Client client;
+
+    @ManyToOne
+    @JoinColumn(name = "barber_id")
+    private Barber barber;
+
+    @ManyToOne
+    @JoinColumn(name = "barbershop_id", nullable = false) 
+    private Barbershop barbershop;
 }

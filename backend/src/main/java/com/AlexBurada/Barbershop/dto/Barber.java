@@ -6,6 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Component
 @AllArgsConstructor
@@ -19,5 +22,11 @@ public class Barber {
     private int id;
     private String name;
     private int years_of_experience;
-    private double base_price_multiplier;
+
+    @ManyToOne
+    @JoinColumn(name = "barbershop_id", nullable = false)
+    private Barbershop barbershop;
+
+    @OneToMany(mappedBy = "barber", cascade = CascadeType.ALL)
+    private List<Appointment> appointments = new ArrayList<>();
 }

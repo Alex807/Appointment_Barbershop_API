@@ -1,4 +1,4 @@
-INSERT INTO clien (name, email, phone) VALUES
+INSERT INTO client (name, email, phone) VALUES
                                         ('Alex Burada', 'alex.burada@gmail.com', '0721234567'),
                                         ('Maria Popescu', 'maria.popescu@yahoo.com', '0734567890'),
                                         ('Ion Georgescu', 'ion.georgescu@gmail.com', '0745678901'),
