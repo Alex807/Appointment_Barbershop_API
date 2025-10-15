@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin
-@RequestMapping("/barbershops")
+@CrossOrigin(origins = "http://localhost:5173")
+@RequestMapping("/api/barbershops")
 public class BarbershopController {
 
     @Autowired
@@ -23,5 +23,10 @@ public class BarbershopController {
     @GetMapping("/{id}")
     public Barbershop getBarbershopById(@PathVariable int id) {
         return service.getBarbershopById(id);
+    }
+
+    @GetMapping("/{city}")
+    public List<Barbershop> getBarbershopByCity(@PathVariable String city) {
+        return service.getBarbershopsByCity(city);
     }
 }

@@ -11,12 +11,13 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Table(name = "user")
-public class User {
+@Table(name = "barber")
+public class Barber {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    private String email;
-    private String phone;
+    private int years_of_experience;
+    private double base_price_multiplier;
 }

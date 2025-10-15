@@ -1,13 +1,13 @@
 import React from "react";
 
-const AddBarbershop = () => {
+const AddProduct = () => {
   return (
     <div>
       <h2 className="text-center" style={{ padding: "10rem" }}>
-        Add Barbershop Coming Soon.....
+        Add Product Coming Soon.....
       </h2>
     </div>
   );
 };
 
-export default AddBarbershop;
+export default AddProduct;

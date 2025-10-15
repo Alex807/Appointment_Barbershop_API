@@ -20,4 +20,8 @@ public class BarbershopService {
     public Barbershop getBarbershopById(int id) {
         return repository.findById(id).get();
     }
+
+    public List<Barbershop> getBarbershopsByCity(String city) {
+        return repository.findByCityIgnoreCase(city);
+    }
 }

@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "./Navbar.css";
-import logo from "../assets/trimtime-logo.png";
 import Home from "./Home";
 import axios from "axios";
 
@@ -27,13 +25,8 @@ const Navbar = ({ onSelectCategory, onSearch }) => {
       <header>
         <nav className="navbar navbar-expand-lg fixed-top">
           <div className="container-fluid">
-            <a className="navbar-brand" href="https://www.linkedin.com/in/andrei-alexandru-burada/">
-            <img 
-                src={logo} 
-                alt="TrimTime" 
-                height="40"
-                className="navbar-logo"
-              />
+            <a className="navbar-brand" href="https://telusko.com/">
+              Telusko
             </a>
             <button
               className="navbar-toggler"
@@ -57,8 +50,8 @@ const Navbar = ({ onSelectCategory, onSearch }) => {
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/users/">
-                    Add Barbershop
+                  <a className="nav-link" href="/add_product">
+                    Add Product
                   </a>
                 </li>
 

@@ -6,19 +6,20 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
+
 @Entity
 @Component
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Table(name = "barbershop")
-public class Barbershop {
+@Table(name = "appointment")
+public class Appointment {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String name;
-    private String city;
-    private String street;
-    private int street_no;
-    private String phone;
+    private String provided_service;
+    private Date scheduled_date;
+    private int estimated_time;
 }
