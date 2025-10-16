@@ -21,7 +21,19 @@ public class BarbershopService {
         return repository.findById(id).get();
     }
 
+    public void addBarbershop(Barbershop barbershop) {
+        repository.save(barbershop);
+    }
+
+    public void updateBarbershop(Barbershop barbershop) {
+        repository.save(barbershop);
+    }
+
+    public void deleteBarbershop(int id) {
+        repository.deleteById(id);
+    }
+
     public List<Barbershop> getBarbershopsByCity(String city) {
-        return repository.findByCityIgnoreCase(city);
+        return repository.findByCityIgnoreCase(city); //can declare custom methods in Spring JPA interface
     }
 }

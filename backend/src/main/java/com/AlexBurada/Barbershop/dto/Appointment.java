@@ -4,12 +4,10 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
 @Entity
-@Component
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -19,7 +17,7 @@ public class Appointment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String provided_service;
+    private String service;
     private Date scheduled_date;
     private double price;
 

@@ -20,4 +20,16 @@ public class AppointmentService {
     public Appointment getAppointmentById(int id) {
         return repository.findById(id).get();
     }
+
+    public void addAppointment(Appointment appointment) {
+        repository.save(appointment);
+    }
+
+    public void updateAppointment(Appointment appointment) {
+        repository.save(appointment);
+    }
+
+    public void deleteAppointment(int id) {
+        repository.deleteById(id);
+    }
 }

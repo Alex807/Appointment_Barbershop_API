@@ -20,4 +20,16 @@ public class BarberService {
     public Barber getBarberById(int id) {
         return repository.findById(id).get();
     }
+
+    public void addBarber(Barber barber) {
+        repository.save(barber);
+    }
+
+    public void updateBarber(Barber barber) {
+        repository.save(barber);
+    }
+
+    public void deleteBarber(int id) {
+        repository.deleteById(id);
+    }
 }

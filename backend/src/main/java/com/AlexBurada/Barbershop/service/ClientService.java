@@ -20,4 +20,16 @@ public class ClientService {
     public Client getClientById(int id) {
         return repository.findById(id).get();
     }
+
+    public void addClient(Client client) {
+        repository.save(client);
+    }
+
+    public void updateClient(Client client) {
+        repository.save(client);
+    }
+
+    public void deleteClient(int id) {
+        repository.deleteById(id);
+    }
 }

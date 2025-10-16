@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Component
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -22,7 +21,4 @@ public class Client {
     private String name;
     private String email;
     private String phone;
-
-    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
-    private List<Appointment> appointments = new ArrayList<>();
 }
