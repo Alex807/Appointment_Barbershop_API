@@ -19,6 +19,10 @@ public class BarbershopService {
         return repository.findAll();
     }
 
+    public List<BarbershopDTO> getBarbershopsByCity(String city) {
+        return repository.findByCityIgnoreCase(city); //can declare custom methods in Spring JPA interface
+    }
+
     public BarbershopDTO getBarbershopById(int id) {
         return repository.findById(id).orElse(null);
     }
@@ -33,9 +37,5 @@ public class BarbershopService {
 
     public void deleteBarbershop(int id) {
         repository.deleteById(id);
-    }
-
-    public List<BarbershopDTO> getBarbershopsByCity(String city) {
-        return repository.findByCityIgnoreCase(city); //can declare custom methods in Spring JPA interface
     }
 }

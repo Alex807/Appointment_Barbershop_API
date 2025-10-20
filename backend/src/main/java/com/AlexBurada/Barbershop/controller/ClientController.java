@@ -3,6 +3,7 @@ package com.AlexBurada.Barbershop.controller;
 import com.AlexBurada.Barbershop.model.ClientDTO;
 import com.AlexBurada.Barbershop.service.ClientService;
 import jakarta.validation.Valid;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -53,11 +54,16 @@ public class ClientController {
         return new ResponseEntity<>(client, HttpStatus.OK);
     }
 
-    @PutMapping
-    public ResponseEntity<ClientDTO> updateClient(@Valid @RequestBody ClientDTO clientDTO) {
+    @PutMapping("/{clientId}")
+    public ResponseEntity<ClientDTO> updateClient(@PathVariable int clientId, @Valid @RequestBody ClientDTO clientDTO) {
 
+        try {
+
+        } catch (ChangeSetPersister.NotFoundException)
         ClientDTO client = service.updateClient(clientDTO);
 
         return new ResponseEntity<>(client, HttpStatus.OK);
     }
+
+//    @Delete
 }

@@ -2,6 +2,8 @@ package com.AlexBurada.Barbershop.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -26,6 +28,7 @@ public class AppointmentDTO {
     private String service;
 
     @NotBlank(message = "Price can't be blank!")
+    @DecimalMin(value = "5.5", message = "Lowest price is 5.5$, but no upside limit ")
     private double price;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
