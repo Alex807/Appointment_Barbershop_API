@@ -1,8 +1,7 @@
 package com.AlexBurada.Barbershop.service;
 
-import com.AlexBurada.Barbershop.dto.Client;
+import com.AlexBurada.Barbershop.model.ClientDTO;
 import com.AlexBurada.Barbershop.repository.ClientRepo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,23 +9,26 @@ import java.util.List;
 @Service
 public class ClientService {
 
-    @Autowired
-    private ClientRepo repository;
+    private final ClientRepo repository;
 
-    public List<Client> getClients() {
+    public ClientService(final ClientRepo repository) {
+        this.repository = repository;
+    }
+
+    public List<ClientDTO> getClients() {
         return repository.findAll();
     }
 
-    public Client getClientById(int id) {
-        return repository.findById(id).get();
+    public ClientDTO getClientById(int id) {
+        return repository.findById(id).orElse(null);
     }
 
-    public void addClient(Client client) {
-        repository.save(client);
+    public ClientDTO addClient(ClientDTO clientDTO) {
+        return repository.save(clientDTO);
     }
 
-    public void updateClient(Client client) {
-        repository.save(client);
+    public ClientDTO updateClient(ClientDTO clientDTO) {
+        return repository.save(clientDTO);
     }
 
     public void deleteClient(int id) {

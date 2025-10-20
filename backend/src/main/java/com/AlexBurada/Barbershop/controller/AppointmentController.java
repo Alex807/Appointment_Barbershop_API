@@ -1,8 +1,7 @@
 package com.AlexBurada.Barbershop.controller;
 
-import com.AlexBurada.Barbershop.dto.Appointment;
+import com.AlexBurada.Barbershop.model.AppointmentDTO;
 import com.AlexBurada.Barbershop.service.AppointmentService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,16 +11,19 @@ import java.util.List;
 @RequestMapping("/api/appointments")
 public class AppointmentController {
 
-    @Autowired
-    private AppointmentService service;
+    private final AppointmentService service; //only once can be assigned
 
-    @GetMapping("/")
-    public List<Appointment> getAppointments() {
+    public AppointmentController(final AppointmentService service) { //thread-safe and unchanged received parameter
+        this.service = service;
+    }
+
+    @GetMapping
+    public List<AppointmentDTO> getAppointments() {
         return service.getAppointments();
     }
 
     @GetMapping("/{id}")
-    public Appointment getAppointmentById(@PathVariable int id) {
+    public AppointmentDTO getAppointmentById(@PathVariable int id) {
         return service.getAppointmentById(id);
     }
 }

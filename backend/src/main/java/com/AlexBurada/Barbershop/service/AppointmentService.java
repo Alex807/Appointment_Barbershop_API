@@ -1,8 +1,7 @@
 package com.AlexBurada.Barbershop.service;
 
-import com.AlexBurada.Barbershop.dto.Appointment;
+import com.AlexBurada.Barbershop.model.AppointmentDTO;
 import com.AlexBurada.Barbershop.repository.AppointmentRepo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,23 +9,26 @@ import java.util.List;
 @Service
 public class AppointmentService {
 
-    @Autowired
-    private AppointmentRepo repository;
+    private final AppointmentRepo repository;
 
-    public List<Appointment> getAppointments() {
+    public AppointmentService(final AppointmentRepo repository) {
+        this.repository = repository;
+    }
+
+    public List<AppointmentDTO> getAppointments() {
         return repository.findAll();
     }
 
-    public Appointment getAppointmentById(int id) {
-        return repository.findById(id).get();
+    public AppointmentDTO getAppointmentById(int id) {
+        return repository.findById(id).orElse(null);
     }
 
-    public void addAppointment(Appointment appointment) {
-        repository.save(appointment);
+    public AppointmentDTO addAppointment(AppointmentDTO appointmentDTO) {
+        return repository.save(appointmentDTO);
     }
 
-    public void updateAppointment(Appointment appointment) {
-        repository.save(appointment);
+    public AppointmentDTO updateAppointment(AppointmentDTO appointmentDTO) {
+        return repository.save(appointmentDTO);
     }
 
     public void deleteAppointment(int id) {

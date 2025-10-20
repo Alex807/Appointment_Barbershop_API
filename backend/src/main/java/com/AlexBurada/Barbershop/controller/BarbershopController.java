@@ -1,6 +1,6 @@
 package com.AlexBurada.Barbershop.controller;
 
-import com.AlexBurada.Barbershop.dto.Barbershop;
+import com.AlexBurada.Barbershop.model.BarbershopDTO;
 import com.AlexBurada.Barbershop.service.BarbershopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,21 +12,24 @@ import java.util.List;
 @RequestMapping("/api/barbershops")
 public class BarbershopController {
 
-    @Autowired
-    private BarbershopService service;
+    private final BarbershopService service;
 
-    @GetMapping("/")
-    public List<Barbershop> getBarbershops() {
+    public BarbershopController(final BarbershopService service) {
+        this.service = service;
+    }
+
+    @GetMapping
+    public List<BarbershopDTO> getBarbershops() {
         return service.getBarbershops();
     }
 
     @GetMapping("/{id}")
-    public Barbershop getBarbershopById(@PathVariable int id) {
+    public BarbershopDTO getBarbershopById(@PathVariable int id) {
         return service.getBarbershopById(id);
     }
 
     @GetMapping("/{city}")
-    public List<Barbershop> getBarbershopByCity(@PathVariable String city) {
+    public List<BarbershopDTO> getBarbershopByCity(@PathVariable String city) {
         return service.getBarbershopsByCity(city);
     }
 }
