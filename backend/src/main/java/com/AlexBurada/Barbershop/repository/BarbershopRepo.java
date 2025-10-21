@@ -1,6 +1,6 @@
 package com.AlexBurada.Barbershop.repository;
 
-import com.AlexBurada.Barbershop.model.BarbershopDTO;
+import com.AlexBurada.Barbershop.dto.BarbershopDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

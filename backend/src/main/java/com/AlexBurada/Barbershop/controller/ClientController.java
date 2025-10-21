@@ -1,14 +1,12 @@
 package com.AlexBurada.Barbershop.controller;
 
-import com.AlexBurada.Barbershop.model.ClientDTO;
+import com.AlexBurada.Barbershop.dto.ClientDTO;
 import com.AlexBurada.Barbershop.service.ClientService;
 import jakarta.validation.Valid;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -27,43 +25,34 @@ public class ClientController {
     @GetMapping
     public ResponseEntity<List<ClientDTO>> getClients() {
 
-        List<ClientDTO> clients = service.getClients();
-
-        if (clients.isEmpty())
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        else
-            return new ResponseEntity<>(clients, HttpStatus.OK);
+        return new ResponseEntity<>(service.getClients(), HttpStatus.OK);
     }
 
     @GetMapping("/{clientId}")
     public ResponseEntity<ClientDTO> getClientById(@PathVariable int clientId) {
 
         ClientDTO client = service.getClientById(clientId);
-
-        if (client == null)
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("Client '%s' NOT found!", clientId));
-        else
-            return new ResponseEntity<>(client, HttpStatus.OK);
+        return new ResponseEntity<>(client, HttpStatus.OK);
     }
 
     @PostMapping
     public ResponseEntity<ClientDTO> addClient(@Valid @RequestBody ClientDTO clientDTO) {
 
         ClientDTO client = service.addClient(clientDTO);
-
         return new ResponseEntity<>(client, HttpStatus.OK);
     }
 
     @PutMapping("/{clientId}")
-    public ResponseEntity<ClientDTO> updateClient(@PathVariable int clientId, @Valid @RequestBody ClientDTO clientDTO) {
+    public ResponseEntity<ClientDTO> updateClient(@PathVariable int clientId, @Valid @RequestBody ClientDTO client) {
 
-        try {
-
-        } catch (ChangeSetPersister.NotFoundException)
-        ClientDTO client = service.updateClient(clientDTO);
-
-        return new ResponseEntity<>(client, HttpStatus.OK);
+        ClientDTO updatedClient = service.updateClient(clientId, client);
+        return new ResponseEntity<>(updatedClient, HttpStatus.OK);
     }
 
-//    @Delete
+    @DeleteMapping("/{clientId}")
+    public ResponseEntity<String> deleteClient(@PathVariable int clientId) {
+
+        service.deleteClient(clientId);
+        return new ResponseEntity<>("Client deleted!", HttpStatus.OK);
+    }
 }

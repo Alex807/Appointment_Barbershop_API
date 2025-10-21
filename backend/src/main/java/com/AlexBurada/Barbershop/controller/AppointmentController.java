@@ -1,7 +1,6 @@
 package com.AlexBurada.Barbershop.controller;
 
-import com.AlexBurada.Barbershop.model.AppointmentDTO;
-import com.AlexBurada.Barbershop.model.ClientDTO;
+import com.AlexBurada.Barbershop.dto.AppointmentDTO;
 import com.AlexBurada.Barbershop.service.AppointmentService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;

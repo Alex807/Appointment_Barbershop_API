@@ -22,7 +22,7 @@ public class GlobalExceptionHandler {
         );
 
         return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(Map.of(
-                "message", "Data are missing/invalid fot the passed object",
+                "message", "Data are missing / invalid fot the passed object",
                 "errors", errors
         ));
     }
@@ -40,10 +40,10 @@ public class GlobalExceptionHandler {
         ));
     }
 
-    @ExceptionHandler(ResponseStatusException.class)
-    public ResponseEntity<String> handleResponseStatus(ResponseStatusException ex) {
+    @ExceptionHandler(DtoNotFoundException.class)
+    public ResponseEntity<String> handleResponseStatus(DtoNotFoundException ex) {
 
-        return new ResponseEntity<>(ex.getReason(), ex.getStatusCode());
+        return new ResponseEntity<>(ex.getMessage(), ex.getStatusCode());
     }
 
     @ExceptionHandler(Exception.class)

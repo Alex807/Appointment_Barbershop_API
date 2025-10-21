@@ -1,6 +1,6 @@
 package com.AlexBurada.Barbershop.service;
 
-import com.AlexBurada.Barbershop.model.BarbershopDTO;
+import com.AlexBurada.Barbershop.dto.BarbershopDTO;
 import com.AlexBurada.Barbershop.repository.BarbershopRepo;
 import org.springframework.stereotype.Service;
 

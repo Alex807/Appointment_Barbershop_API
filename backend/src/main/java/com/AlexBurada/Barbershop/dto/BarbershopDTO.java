@@ -1,7 +1,8 @@
-package com.AlexBurada.Barbershop.model;
+package com.AlexBurada.Barbershop.dto;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,6 +20,7 @@ public class BarbershopDTO {
 
     @NotBlank(message = "Name can't be blank!")
     @Size(min = 3, max = 40, message = "Name must be between 3 and 40 characters")
+    @Pattern(regexp = "^[a-zA-Z\\s'-]+$", message = "Name format is invalid!")
     private String name;
 
     @NotBlank(message = "City can't be blank!")
