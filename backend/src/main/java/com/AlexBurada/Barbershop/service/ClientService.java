@@ -1,6 +1,6 @@
 package com.AlexBurada.Barbershop.service;
 
-import com.AlexBurada.Barbershop.exception.DtoNotFoundException;
+import com.AlexBurada.Barbershop.exception.ResourceNotFoundException;
 import com.AlexBurada.Barbershop.dto.ClientDTO;
 import com.AlexBurada.Barbershop.repository.ClientRepo;
 import org.springframework.http.HttpStatus;
@@ -24,7 +24,7 @@ public class ClientService {
 
     public ClientDTO getClientById(int id) {
         return repository.findById(id)
-                        .orElseThrow(() -> new DtoNotFoundException(String.format("Client '%s' NOT found!", id), HttpStatus.NOT_FOUND));
+                        .orElseThrow(() -> new ResourceNotFoundException(String.format("Client '%s' NOT found!", id), HttpStatus.NOT_FOUND));
     }
 
 

@@ -7,12 +7,13 @@ import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Range;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Table(name = "barbershop")
+@Table(name = "barbershops")
 public class BarbershopDTO {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,7 +32,7 @@ public class BarbershopDTO {
     @Size(min = 3, max = 25, message = "Street must be between 3 and 25 characters")
     private String street;
 
-    @NotBlank(message = "Street_no can't be blank!")
+    @Range(min = 1, max = 300, message = "Street_no can't be blank!")
     private int street_no;
 
     @Size(min = 10, max = 15, message = "Phone needs 10 characters to be valid")

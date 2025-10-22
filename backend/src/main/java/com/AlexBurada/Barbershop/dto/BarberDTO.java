@@ -13,7 +13,7 @@ import org.hibernate.validator.constraints.Range;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Table(name = "barber")
+@Table(name = "barbers")
 public class BarberDTO {
 
     @Id
@@ -28,7 +28,7 @@ public class BarberDTO {
     @Size(min = 3, max = 20, message = "Speciality must be between 3 and 20 characters")
     private String speciality;
 
-    @Range(min = 0, max = 30, message = "Experience can't be negative")
+    @Range(min = 0, max = 30, message = "Experience need to be in range 0 - 30")
     private int years_of_experience;
 
     @Size(min = 10, max = 15, message = "Phone needs 10 characters to be valid")
