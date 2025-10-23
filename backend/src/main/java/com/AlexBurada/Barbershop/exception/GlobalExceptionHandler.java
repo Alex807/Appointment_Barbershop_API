@@ -1,6 +1,7 @@
 package com.AlexBurada.Barbershop.exception;
 
 import jakarta.validation.ConstraintViolationException;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -43,6 +44,20 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> handleResponseStatus(ResourceNotFoundException ex) {
 
         return new ResponseEntity<>(ex.getMessage(), ex.getStatusCode());
+    }
+
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<String> handleSqlException(DataIntegrityViolationException ex) {
+        String message = "Database constraint violation";
+
+        Throwable rootCause = ex.getRootCause();
+        if (rootCause != null) {
+            message = rootCause.getMessage();
+        } else if (ex.getCause() != null) {
+            message = ex.getCause().getMessage();
+        }
+
+        return new ResponseEntity<>(message, HttpStatus.CONFLICT);
     }
 
     @ExceptionHandler(Exception.class)

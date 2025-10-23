@@ -1,14 +1,14 @@
 package com.AlexBurada.Barbershop.repository;
 
-import com.AlexBurada.Barbershop.dto.BarbershopDTO;
+import com.AlexBurada.Barbershop.entity.Barbershop;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface BarbershopRepo extends JpaRepository<BarbershopDTO, Integer> {
+public interface BarbershopRepo extends JpaRepository<Barbershop, Integer> {
 
     //Spring Data JPA implements method by their naming
-    List<BarbershopDTO> findByCityIgnoreCase(String city);
+    List<Barbershop> findByCityIgnoreCase(String city);
 }

@@ -42,7 +42,7 @@ public class BarbershopService {
         existingBarbershop.setName(barbershopDTO.getName());
         existingBarbershop.setCity(barbershopDTO.getCity());
         existingBarbershop.setStreet(barbershopDTO.getStreet());
-        existingBarbershop.setStreet_no(barbershopDTO.getStreet_no());
+        existingBarbershop.setStreetNumber(barbershopDTO.getStreetNumber());
         existingBarbershop.setPhone(barbershopDTO.getPhone());
 
         return repository.save(existingBarbershop);

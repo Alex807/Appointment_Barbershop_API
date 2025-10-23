@@ -33,15 +33,17 @@ public class ClientController {
     }
 
     @PostMapping
-    public ResponseEntity<ClientDTO> addClient(@Valid @RequestBody ClientDTO clientDTO) {
+    public ResponseEntity<String> addClient(@Valid @RequestBody ClientDTO clientDTO) {
 
-        return new ResponseEntity<>(service.addClient(clientDTO), HttpStatus.OK);
+        service.addClient(clientDTO);
+        return new ResponseEntity<>("Client added successfully!", HttpStatus.OK);
     }
 
     @PutMapping("/{clientId}")
-    public ResponseEntity<ClientDTO> updateClient(@PathVariable int clientId, @Valid @RequestBody ClientDTO client) {
+    public ResponseEntity<String> updateClient(@PathVariable int clientId, @Valid @RequestBody ClientDTO client) {
 
-        return new ResponseEntity<>(service.updateClient(clientId, client), HttpStatus.OK);
+        service.updateClient(clientId, client);
+        return new ResponseEntity<>("Client updated successfully!", HttpStatus.OK);
     }
 
     @DeleteMapping("/{clientId}")
