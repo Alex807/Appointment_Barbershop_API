@@ -8,7 +8,7 @@ INSERT INTO clients (name, email, phone) VALUES
                                         ('Cristian Radu', 'cristian.radu@gmail.com', '0789012345'),
                                         ('Diana Popa', 'diana.popa@hotmail.com', '0790123456');
 
-INSERT INTO barbershops (name, city, street, street_no, phone) VALUES
+INSERT INTO barbershops (name, city, street_name, street_no, phone) VALUES
                                        ('Classic Cuts', 'Bucharest', 'Calea Victoriei', 15, '0212345678'),
                                        ('Modern Style Barbershop', 'Cluj-Napoca', 'Strada Memorandumului',  28, '0264123456'),
                                        ('Gentlemen''s Corner', 'Timisoara', 'Bulevardul Revolutiei',  7, '0256789012'),

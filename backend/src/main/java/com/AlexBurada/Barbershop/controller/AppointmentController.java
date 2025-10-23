@@ -33,15 +33,17 @@ public class AppointmentController {
     }
 
     @PostMapping
-    public ResponseEntity<AppointmentDTO> addAppointment(@Valid @RequestBody AppointmentDTO appointmentDTO) {
+    public ResponseEntity<String> addAppointment(@Valid @RequestBody AppointmentDTO appointmentDTO) {
 
-        return new ResponseEntity<>(service.addAppointment(appointmentDTO), HttpStatus.OK);
+        service.addAppointment(appointmentDTO);
+        return new ResponseEntity<>("Appointment booked successfully!", HttpStatus.OK);
     }
 
     @PutMapping("/{appointmentId}")
-    public ResponseEntity<AppointmentDTO> updateAppointment(@PathVariable int appointmentId, @Valid @RequestBody AppointmentDTO appointmentDTO) {
+    public ResponseEntity<String> updateAppointment(@PathVariable int appointmentId, @Valid @RequestBody AppointmentDTO appointmentDTO) {
 
-        return new ResponseEntity<>(service.updateAppointment(appointmentId, appointmentDTO), HttpStatus.OK);
+        service.updateAppointment(appointmentId, appointmentDTO);
+        return new ResponseEntity<>("Appointment updated successfully!", HttpStatus.OK);
     }
 
     @DeleteMapping("/{appointmentId}")

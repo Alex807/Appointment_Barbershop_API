@@ -6,7 +6,6 @@ import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -34,15 +33,17 @@ public class BarberController {
     }
 
     @PostMapping
-    public ResponseEntity<BarberDTO> addBarber(@Valid @RequestBody BarberDTO barberDTO) {
+    public ResponseEntity<String> addBarber(@Valid @RequestBody BarberDTO barberDTO) {
 
-        return new ResponseEntity<>(service.addBarber(barberDTO), HttpStatus.OK);
+        service.addBarber(barberDTO);
+        return new ResponseEntity<>("Barber added successfully!", HttpStatus.OK);
     }
 
     @PutMapping("/{barberId}")
-    public ResponseEntity<BarberDTO> updateBarber(@PathVariable int barberId, @Valid @RequestBody BarberDTO barberDTO) {
+    public ResponseEntity<String> updateBarber(@PathVariable int barberId, @Valid @RequestBody BarberDTO barberDTO) {
 
-        return new ResponseEntity<>(service.updateBarber(barberId, barberDTO), HttpStatus.OK);
+        service.updateBarber(barberId, barberDTO);
+        return new ResponseEntity<>("Barber updated successfully!", HttpStatus.OK);
     }
 
     @DeleteMapping("/{barberId}")

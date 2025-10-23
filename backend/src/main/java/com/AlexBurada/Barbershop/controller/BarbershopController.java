@@ -39,15 +39,17 @@ public class BarbershopController {
     }
 
     @PostMapping
-    public ResponseEntity<BarbershopDTO> addBarbershop(@Valid @RequestBody BarbershopDTO barbershopDTO) {
+    public ResponseEntity<String> addBarbershop(@Valid @RequestBody BarbershopDTO barbershopDTO) {
 
-        return new ResponseEntity<>(service.addBarbershop(barbershopDTO), HttpStatus.OK);
+        service.addBarbershop(barbershopDTO);
+        return new ResponseEntity<>("Barbershop added successfully!", HttpStatus.OK);
     }
 
     @PutMapping("/{barbershopId}")
-    public ResponseEntity<BarbershopDTO> updateBarbershop(@PathVariable int barbershopId, @Valid @RequestBody BarbershopDTO barbershopDTO) {
+    public ResponseEntity<String> updateBarbershop(@PathVariable int barbershopId, @Valid @RequestBody BarbershopDTO barbershopDTO) {
 
-        return new ResponseEntity<>(service.updateBarbershop(barbershopId, barbershopDTO), HttpStatus.OK);
+        service.updateBarbershop(barbershopId, barbershopDTO);
+        return new ResponseEntity<>("Barbershop updated successfully!", HttpStatus.OK);
     }
 
     @DeleteMapping("/{barbershopId}")

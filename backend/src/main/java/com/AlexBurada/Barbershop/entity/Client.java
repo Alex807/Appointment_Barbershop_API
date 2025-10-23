@@ -10,7 +10,9 @@ import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -29,7 +31,7 @@ public class Client {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @NotBlank(message = "Client name can't be blank!")
     @Size(min = 3, max = 20, message = "Name must be between 3 and 20 characters")
@@ -46,11 +48,11 @@ public class Client {
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     @Column(name = "created_at")
-    private Date createdAt;
+    @CreationTimestamp
+    private LocalDateTime createdAt;
 
     public Client(ClientDTO clientDTO) {
         update(clientDTO);
-        this.createdAt = new Date(); //returns value for 'now'
     }
 
     public void update(ClientDTO clientDTO) {

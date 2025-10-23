@@ -38,8 +38,8 @@ public class ClientService {
 
 
     public void addClient(ClientDTO clientDTO) { //we work with DTO's to hide important data from user
-        Client client = new Client(clientDTO);
 
+        Client client = new Client(clientDTO);
         repository.save(client);
     }
 
